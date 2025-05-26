@@ -1,0 +1,429 @@
+{% extends 'base.html' %}
+
+{% block title %}Analytics - Suspect Detection{% endblock %}
+
+{% block content %}
+<style>
+    :root {
+        --primary-color: #6366f1;
+        --secondary-color: #4f46e5;
+        --card-1-gradient: linear-gradient(135deg, #7c3aed, #6366f1);
+        --card-2-gradient: linear-gradient(135deg, #10b981, #34d399);
+        --card-3-gradient: linear-gradient(135deg, #0ea5e9, #38bdf8);
+        --card-4-gradient: linear-gradient(135deg, #f59e0b, #fbbf24);
+        --light-bg: #f1f5f9;
+    }
+
+    .container-fluid {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 2.5rem;
+        text-align: center;
+    }
+
+    /* Metric Cards */
+    .metrics-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .metric-card {
+        border-radius: 16px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .metric-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-body {
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .metric-card:nth-child(1) .card-body { background: var(--card-1-gradient); }
+    .metric-card:nth-child(2) .card-body { background: var(--card-2-gradient); }
+    .metric-card:nth-child(3) .card-body { background: var(--card-3-gradient); }
+    .metric-card:nth-child(4) .card-body { background: var(--card-4-gradient); }
+
+    .metric-value {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: white;
+        margin: 1rem 0;
+    }
+
+    .metric-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 0.5rem;
+    }
+
+    .badge {
+        background: rgba(255, 255, 255, 0.2) !important;
+        color: white !important;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+    }
+
+    /* Main Layout */
+    .main-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .left-column {
+        grid-column: span 1;
+    }
+
+    /* Confusion Matrix */
+    .confusion-matrix {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .matrix-header {
+        background: var(--card-1-gradient);
+        color: white;
+        font-weight: 600;
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .matrix-cell {
+        padding: 1.5rem !important;
+        font-size: 1.2rem;
+        font-weight: 600;
+        border-radius: 8px;
+        color: white;
+        text-align: center;
+    }
+
+    .true-positive { background: var(--card-2-gradient) !important; }
+    .true-negative { background: var(--card-2-gradient) !important; }
+    .false-positive { background: var(--card-4-gradient) !important; }
+    .false-negative { background: var(--card-4-gradient) !important; }
+
+    .matrix-legend {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .legend-item {
+        padding: 0.75rem 1.25rem;
+        border-radius: 12px;
+        color: white;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    /* Charts */
+    .chart-container {
+        background: white;
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin-bottom: 2rem;
+    }
+
+    .chart-title {
+        color: var(--primary-color);
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    /* Performance Summary */
+    .performance-summary {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .summary-title {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+    .summary-item {
+        margin-bottom: 1rem;
+        padding: 1.25rem;
+        border-radius: 12px;
+        background: var(--light-bg);
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .summary-item strong {
+        color: var(--primary-color);
+    }
+
+    /* Upload Button */
+    .upload-section {
+        text-align: center;
+        margin-top: 3rem;
+    }
+
+    .upload-btn {
+        background: var(--card-1-gradient);
+        color: white;
+        padding: 1rem 2.5rem;
+        border-radius: 30px;
+        border: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .upload-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+    }
+
+    @media (max-width: 1200px) {
+        .main-grid {
+            grid-template-columns: 1fr;
+        }
+        .left-column, .right-column {
+            grid-column: span 12;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .metrics-row {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .matrix-legend {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .metrics-row {
+            grid-template-columns: 1fr;
+        }
+        .container-fluid {
+            padding: 1rem;
+        }
+    }
+</style>
+
+<div class="container-fluid">
+    <h1 class="page-title">
+        <i class="fas fa-chart-line me-3"></i>Model Performance Analytics
+    </h1>
+
+    <!-- Metrics Cards -->
+    <div class="metrics-row">
+        <div class="metric-card">
+            <div class="card-body">
+                <h5 class="metric-title">Accuracy</h5>
+                <div class="metric-value">{{ accuracy|floatformat:2 }}%</div>
+                <div class="mt-3">
+                    <span class="badge">
+                        <i class="fas fa-bullseye me-2"></i>Overall Performance
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="metric-card">
+            <div class="card-body">
+                <h5 class="metric-title">Precision</h5>
+                <div class="metric-value">{{ precision|floatformat:2 }}%</div>
+                <div class="mt-3">
+                    <span class="badge">
+                        <i class="fas fa-check-double me-2"></i>True Positives
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="metric-card">
+            <div class="card-body">
+                <h5 class="metric-title">Recall</h5>
+                <div class="metric-value">{{ recall|floatformat:2 }}%</div>
+                <div class="mt-3">
+                    <span class="badge">
+                        <i class="fas fa-search me-2"></i>Detection Rate
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="metric-card">
+            <div class="card-body">
+                <h5 class="metric-title">F1 Score</h5>
+                <div class="metric-value">{{ f1_score|floatformat:2 }}%</div>
+                <div class="mt-3">
+                    <span class="badge">
+                        <i class="fas fa-balance-scale me-2"></i>Balanced Score
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="main-grid">
+        <!-- Main Column -->
+        <div class="left-column">
+            <!-- Confusion Matrix -->
+            <div class="confusion-matrix">
+                <h3 class="chart-title">
+                    <i class="fas fa-th me-2"></i>Confusion Matrix
+                </h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="matrix-header"></th>
+                                <th class="matrix-header">Predicted Suspect</th>
+                                <th class="matrix-header">Predicted Non-Suspect</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th class="matrix-header">Actual Suspect</th>
+                                <td class="matrix-cell true-positive">{{ confusion_matrix.0.0 }}</td>
+                                <td class="matrix-cell false-negative">{{ confusion_matrix.0.1 }}</td>
+                            </tr>
+                            <tr>
+                                <th class="matrix-header">Actual Non-Suspect</th>
+                                <td class="matrix-cell false-positive">{{ confusion_matrix.1.0 }}</td>
+                                <td class="matrix-cell true-negative">{{ confusion_matrix.1.1 }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="matrix-legend">
+                    <div class="legend-item" style="background: var(--card-2-gradient)">
+                        <i class="fas fa-check-circle"></i>True Positives: {{ confusion_matrix.0.0 }}
+                    </div>
+                    <div class="legend-item" style="background: var(--card-4-gradient)">
+                        <i class="fas fa-times-circle"></i>False Positives: {{ confusion_matrix.1.0 }}
+                    </div>
+                    <div class="legend-item" style="background: var(--card-4-gradient)">
+                        <i class="fas fa-times-circle"></i>False Negatives: {{ confusion_matrix.0.1 }}
+                    </div>
+                    <div class="legend-item" style="background: var(--card-2-gradient)">
+                        <i class="fas fa-check-circle"></i>True Negatives: {{ confusion_matrix.1.1 }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Summary -->
+            <div class="performance-summary">
+                <h3 class="summary-title">
+                    <i class="fas fa-info-circle me-2"></i>Performance Summary
+                </h3>
+                <div class="summary-item">
+                    <strong>Model Accuracy:</strong> {{ accuracy|floatformat:2 }}% - 
+                    The model is performing well in overall classification.
+                </div>
+                <div class="summary-item">
+                    <strong>Precision vs Recall:</strong> 
+                    The model shows a good balance between precision ({{ precision|floatformat:2 }}%) 
+                    and recall ({{ recall|floatformat:2 }}%).
+                </div>
+                <div class="summary-item">
+                    <strong>F1 Score:</strong> {{ f1_score|floatformat:2 }}% - 
+                    Indicates balanced performance between precision and recall.
+                </div>
+            </div>
+
+            <!-- Metrics Chart -->
+            <div class="chart-container">
+                <h3 class="chart-title">
+                    <i class="fas fa-chart-bar me-2"></i>Performance Metrics Comparison
+                </h3>
+                <canvas id="metricsChart" height="250"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Button -->
+    <div class="upload-section">
+        <a href="{% url 'home' %}" class="upload-btn">
+            <i class="fas fa-upload"></i>Upload New File
+        </a>
+    </div>
+</div>
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Metrics Chart
+    const metricsCtx = document.getElementById('metricsChart').getContext('2d');
+    new Chart(metricsCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Accuracy', 'Precision', 'Recall', 'F1 Score'],
+            datasets: [{
+                label: 'Performance Metrics (%)',
+                data: [
+                    {{ accuracy|floatformat:2 }},
+                    {{ precision|floatformat:2 }},
+                    {{ recall|floatformat:2 }},
+                    {{ f1_score|floatformat:2 }}
+                ],
+                backgroundColor: [
+                    '#7c3aed',
+                    '#10b981',
+                    '#0ea5e9',
+                    '#f59e0b'
+                ],
+                borderWidth: 0,
+                borderRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}
+{% endblock %} 

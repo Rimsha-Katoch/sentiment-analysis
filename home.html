@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Suspect Detection{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mb-5">
+    <div class="col-md-10 text-center">
+        <h1 class="display-4 mb-4" style="color: var(--primary-color); font-weight: 700;">Suspect Detection System</h1>
+        <p class="lead mb-5">Advanced NLP-powered system to identify potentially suspicious comments using sentiment analysis and machine learning.</p>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body p-4">
+                <h2 class="card-title text-center mb-4">
+                    <i class="fas fa-upload me-2"></i>Upload Comments CSV File
+                </h2>
+                <form method="post" action="{% url 'results' %}" enctype="multipart/form-data" class="mb-4">
+                    {% csrf_token %}
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <label for="csv_file" class="btn btn-outline-primary me-3">
+                                <i class="fas fa-file-csv me-2"></i>Choose File
+                                <input type="file" id="csv_file" name="csv_file" accept=".csv" class="d-none" required onchange="updateFileName(this)">
+                            </label>
+                            <span id="file-name" class="text-muted">No file chosen</span>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg px-5">
+                            <i class="fas fa-search me-2"></i>Upload and Analyze
+                        </button>
+                    </div>
+                </form>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} text-center">
+                            <i class="fas fa-info-circle me-2"></i>{{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body text-center p-4">
+                <div class="mb-3">
+                    <i class="fas fa-shield-alt fa-3x" style="color: var(--primary-color);"></i>
+                </div>
+                <h4 class="card-title">Secure Analysis</h4>
+                <p class="card-text">Your data is processed securely and never stored permanently without your consent.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body text-center p-4">
+                <div class="mb-3">
+                    <i class="fas fa-brain fa-3x" style="color: var(--secondary-color);"></i>
+                </div>
+                <h4 class="card-title">Advanced AI</h4>
+                <p class="card-text">Powered by state-of-the-art NLP models trained on extensive datasets.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body text-center p-4">
+                <div class="mb-3">
+                    <i class="fas fa-chart-line fa-3x" style="color: var(--accent-color);"></i>
+                </div>
+                <h4 class="card-title">Detailed Analytics</h4>
+                <p class="card-text">Get comprehensive insights and performance metrics for your analysis.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function updateFileName(input) {
+    const fileName = input.files[0]?.name || 'No file chosen';
+    document.getElementById('file-name').textContent = fileName;
+}
+</script>
+{% endblock %} 
