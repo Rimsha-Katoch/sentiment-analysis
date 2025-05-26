@@ -1,0 +1,167 @@
+Post_ID,User_ID,Post_Text,Sentiment,User_Category
+P1,U13,its hard to say whos right or wrong,Neutral,Neutral
+P3,U28,this is just the beginning more will come,Negative,Radicalized
+P4,U97,lets support peace and unity,Positive,Supportive
+P5,U21,peace is the only way forward,Positive,Supportive
+P6,U24,some people support others criticize,Neutral,Neutral
+P8,U76,news reports suggest rising tensions,Neutral,Neutral
+P9,U75,we must retaliate against them,Negative,Radicalized
+P11,U30,justice will prevail over hate,Positive,Supportive
+P14,U14,justice should be served in any way possible,Negative,Radicalized
+P17,U35,we must stand together against terror,Positive,Supportive
+P18,U72,violence is the only language they understand,Negative,Radicalized
+P19,U79,violence never solves anything,Positive,Supportive
+P20,U30,they will pay for their actions,Negative,Radicalized
+P21,U31,opinions on the incident vary widely,Neutral,Neutral
+P22,U32,the recent events are concerning,Neutral,Neutral
+P23,U33,lets work together to make our community stronger,positive,community building
+P24,U34,peace and kindness are the keys to a better future,positive,peace advocacy
+P25,U35,helping others is the true path to greatness,positive,motivational
+P26,U36,lets stand united against hatred and violence,positive,anti-violence
+P27,U37,every act of kindness makes the world brighter,positive,inspirational
+P28,U38,we should always support each other and lift each other up,positive,community support
+P29,U39,working together brings lasting change,positive,collaboration
+P30,U40,compassion and empathy will heal our society,positive,peace advocacy
+P31,U41,volunteering brings purpose and joy,positive,community service
+P32,U42,a peaceful heart leads to a peaceful world,positive,peace advocacy
+P33,U43,your voice matterslets shape the future together,positive,civic engagement
+P34,U44,support your neighbors and show kindness every day,positive,community building
+P35,U45,education is the foundation of a brighter tomorrow,positive,inspirational
+P36,U46,celebrate diversity and respect all people,positive,diversity
+P37,U47,forgiveness is a powerful act of courage,positive,peace advocacy
+P38,U48,the world needs more compassion and understanding,positive,motivational
+P39,U49,your small actions can inspire great change,positive,inspirational
+P40,U50,we can overcome anything if we stand together,positive,collaboration
+P41,U51,be a light in someone elses darkness,positive,inspirational
+P42,U52,acts of kindness ripple far beyond what we see,positive,motivational
+P43,U53,our community thrives when we all contribute,positive,community building
+P44,U54,together we can build a future based on love and respect,positive,peace advocacy
+P45,U55,unity and respect will always defeat hatred,positive,anti-violence
+P46,U56,lets invest in hope and humanity,positive,motivational
+P47,U57,positive change starts with empathy,positive,inspirational
+P48,U58,choose kindness over anger every single day,positive,peace advocacy
+P49,U59,support each other and great things will follow,positive,community support
+P50,U60,peace begins with a single act of understanding,positive,peace advocacy
+P51,U61,helping someone today could change their life forever,positive,motivational
+P52,U62,spread hope not hate,positive,anti-violence
+P53,U63,lets build bridges not walls,positive,community building
+P54,U64,empathy is the root of lasting peace,positive,peace advocacy
+P55,U65,kind words are more powerful than you know,positive,inspirational
+P56,U66,inclusion creates stronger communities,positive,diversity
+P57,U67,be part of the solutionhelp others rise,positive,motivational
+P58,U68,together we can create a kinder world,positive,peace advocacy
+P59,U69,always be the reason someone smiles today,positive,inspirational
+P60,U70,listening with empathy can change lives,positive,peace advocacy
+P61,U71,lets work for peace justice and equality,positive,civic engagement
+P62,U72,respect and kindness make every community stronger,positive,community support
+P63,U73,a peaceful society starts with each of us,positive,peace advocacy
+P64,U74,small acts of love can change the world,positive,motivational
+P65,U75,we all have a role in building harmony,positive,collaboration
+P66,U76,the future is brighter when we work together,positive,inspirational
+P67,U77,kindness is the language of true strength,positive,peace advocacy
+P68,U78,lift others up whenever you can,positive,community building
+P69,U79,unity is the foundation of peace,positive,motivational
+P70,U80,never underestimate the power of compassion,positive,inspirational
+P71,U81,love and understanding will always prevail,positive,peace advocacy
+P72,U82,the path to peace is paved with kindness,positive,peace advocacy
+P73,U83,the tyrants will soon feel the fury of our cause,negative,extremist threat
+P74,U84,we will light the flames of rebellion in every corner,negative,radicalization
+P75,U85,no compromise no surrender only total annihilation awaits them,negative,extremist threat
+P76,U86,the oppressors will be hunted down one by one,negative,extremist threat
+P77,U87,every drop of their blood will water the seeds of our victory,negative,propaganda
+P78,U88,they think they are safe but the storm is already upon them,negative,extremist threat
+P79,U89,let their walls crumble and their cities burn,negative,extremist threat
+P80,U90,the world will hear our call and justice will be served through fire,negative,propaganda
+P81,U91,we are the sword that will strike at their heart,negative,extremist threat
+P82,U92,soon their cries will echo through the ruins,negative,propaganda
+P83,U93,every moment wasted is a betrayal to our fallen brothers,negative,radicalization
+P84,U94,we will make the earth shake beneath their feet,negative,extremist threat
+P85,U95,they will beg for mercy but none will be given,negative,extremist threat
+P86,U96,their time is up and their empire will collapse,negative,propaganda
+P87,U97,we will strike fear into their hearts with every step we take,negative,radicalization
+P88,U98,the blood of our martyrs fuels our wrath,negative,glorification
+P89,U99,they will taste the bitterness of defeat,negative,extremist threat
+P90,U100,we will rise from the ashes stronger than ever,negative,propaganda
+P91,U101,our blades are sharp and our resolve is unbreakable,negative,extremist threat
+P92,U102,their false peace will be shattered beyond repair,negative,radicalization
+P93,U103,the night will be long and filled with fire,negative,extremist threat
+P94,U104,we are the storm that will wipe them out,negative,propaganda
+P95,U105,no fortress is strong enough to withstand our rage,negative,extremist threat
+P96,U106,their screams will echo across the battlefield,negative,propaganda
+P97,U107,we will take back what is rightfully ours with force,negative,radicalization
+P98,U108,the final battle is near and we will emerge victorious,negative,extremist threat
+P99,U109,their illusions of safety will crumble,negative,propaganda
+P100,U110,they have awakened a force they cannot contain,negative,radicalization
+P101,U111,the soil will drink their blood,negative,extremist threat
+P102,U112,we will reduce their cities to rubble,negative,extremist threat
+P103,U113,they have chosen war and war they shall receive,negative,propaganda
+P104,U114,we are unstoppable and we will show them no mercy,negative,extremist threat
+P105,U115,the righteous will prevail and the corrupt will fall,negative,propaganda
+P106,U116,prepare for the reckoning for it comes swiftly,negative,extremist threat
+P107,U117,we will dismantle their lies with our truth and power,negative,radicalization
+P108,U118,the cries of our people will be avenged,negative,extremist threat
+P109,U119,there is no turning back the war has begun,negative,propaganda
+P110,U120,the storm approaches and it carries no mercy,negative,extremist threat
+P111,U121,they will find no refuge from our wrath,negative,extremist threat
+P112,U122,our vengeance is swift and merciless,negative,propaganda
+P113,U123,their fate is sealed and their end is near,negative,extremist threat
+P114,U124,we will not rest until they are wiped from the earth,negative,extremist threat
+P115,U125,the streets will run red with their blood,negative,propaganda
+P116,U126,only through force will justice be served,negative,radicalization
+P117,U127,we will bring darkness upon them,negative,extremist threat
+P118,U128,no one can stop the righteous fury of our cause,negative,extremist threat
+P119,U129,we are the flame that will consume them,negative,propaganda
+P120,U130,soon they will vanish like dust in the wind,negative,extremist threat
+P121,U131,we will break their chains with iron fists,negative,radicalization
+P122,U132,they will kneel before our power,negative,extremist threat
+P123,U133,the incident was reported on the news this morning,neutral,reporting
+P124,U134,authorities are investigating the situation,neutral,reporting
+P125,U135,the event has caused traffic disruptions downtown,neutral,reporting
+P126,U136,officials have not yet confirmed the number of casualties,neutral,reporting
+P127,U137,the area has been cordoned off for safety,neutral,reporting
+P128,U138,emergency services were quick to respond,neutral,reporting
+P129,U139,there is a press conference scheduled for later today,neutral,reporting
+P130,U140,security has been heightened in the city,neutral,reporting
+P131,U141,more updates are expected from the police shortly,neutral,reporting
+P132,U142,local businesses have been temporarily closed,neutral,reporting
+P133,U143,the situation is still developing,neutral,reporting
+P134,U144,helicopters have been seen flying over the area,neutral,reporting
+P135,U145,there are conflicting reports about what happened,neutral,reporting
+P136,U146,eyewitnesses have shared images on social media,neutral,reporting
+P137,U147,the motive behind the attack is still unclear,neutral,reporting
+P138,U148,journalists are gathering near the scene,neutral,reporting
+P139,U149,police are advising people to avoid the area,neutral,reporting
+P140,U150,authorities are working to ensure public safety,neutral,reporting
+P141,U151,there have been similar incidents in the past,neutral,reporting
+P142,U152,experts are analyzing the potential impact,neutral,reporting
+P143,U153,the event has been widely covered by international media,neutral,reporting
+P144,U154,a security perimeter has been established,neutral,reporting
+P145,U155,police are questioning witnesses,neutral,reporting
+P146,U156,crisis response teams are on the scene,neutral,reporting
+P147,U157,the incident has prompted discussions about security measures,neutral,reporting
+P148,U158,social media is flooded with reactions to the event,neutral,reporting
+P149,U159,the mayor is expected to make a statement,neutral,reporting
+P150,U160,there is a visible police presence in the affected area,neutral,reporting
+P151,U161,rescue operations are still ongoing,neutral,reporting
+P152,U162,a curfew has been imposed in some parts of the city,neutral,reporting
+P153,U163,investigators are reviewing surveillance footage,neutral,reporting
+P154,U164,residents are being kept informed by local authorities,neutral,reporting
+P155,U165,the national government has expressed concern,neutral,reporting
+P156,U166,there is speculation about who is responsible,neutral,reporting
+P157,U167,military units are assisting local law enforcement,neutral,reporting
+P158,U168,a detailed report is expected tomorrow,neutral,reporting
+P159,U169,officials are coordinating with emergency services,neutral,reporting
+P160,U170,some roads have been closed to traffic,neutral,reporting
+P161,U171,local shelters have been opened for displaced residents,neutral,reporting
+P162,U172,the national security level has been raised,neutral,reporting
+P163,U173,news outlets are providing live coverage,neutral,reporting
+P164,U174,there is a growing demand for information,neutral,reporting
+P165,U175,authorities are expected to release more details soon,neutral,reporting
+P166,U176,this incident has triggered a security review,neutral,reporting
+P167,U177,there are ongoing efforts to restore normalcy,neutral,reporting
+P168,U178,multiple agencies are involved in the response,neutral,reporting
+P169,U179,updates are being shared through official channels,neutral,reporting
+P170,U180,some community events have been postponed,neutral,reporting
+P171,U181,the investigation is in its early stages,neutral,reporting
+P172,U182,there has been an outpouring of support for those affected,neutral,reporting
+P173,U183,several countries have issued travel advisories,neutral,reporting
